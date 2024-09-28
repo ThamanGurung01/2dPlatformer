@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
     private float moveInput;
-    private bool isGrounded;
+    public bool isGrounded;
 
     void Start()
         {
@@ -35,6 +35,15 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Platform"))
             {
             isGrounded = true;
+            }
+        if (collision.gameObject.CompareTag("Pit"))
+            {
+            Destroy(gameObject);
+            }
+        if (collision.gameObject.CompareTag("Power"))
+            {
+            Debug.Log("true");
+            Destroy(collision.gameObject);
             }
         }
     private void OnCollisionExit2D(Collision2D collision)

@@ -14,17 +14,27 @@ public class CameraMovement : MonoBehaviour
     private float cameraInitial;
     void Start()
     {
+        if (player != null)
+            {
         cameraLeftLimit=player.transform.position.x;
         cameraInitial = transform.position.x;
-    }
+            }
+        }
 
     // Update is called once per frame
     void Update()
-    {
-        if (cameraLeftLimit<player.transform.position.x&& cameraInitial<player.transform.position.x)
+        {
+        if (player != null)
             {
-            transform.position = new Vector3((player.transform.position.x - offsetX),transform.position.y , offsetZ);
+            if (cameraLeftLimit < player.transform.position.x && cameraInitial < player.transform.position.x)
+                {
+                transform.position = new Vector3((player.transform.position.x - offsetX), transform.position.y, offsetZ);
+                }
+            transform.position = new Vector3(transform.position.x, (player.transform.position.y - offsetY), offsetZ);
             }
-        transform.position = new Vector3(transform.position.x,(player.transform.position.y - offsetY), offsetZ);
+        else
+            {
+            
+            }
         }
 }
