@@ -20,7 +20,7 @@ public class MovingPlatform : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+        {
         //&& transform.position.x <= rightMax
         if (moveRight)
             {
@@ -32,20 +32,29 @@ public class MovingPlatform : MonoBehaviour
                 }
 
 
-            } else { 
-                transform.position = new Vector3(transform.position.x - 0.01f, transform.position.y, transform.position.z);
+            }
+        else
+            {
+            transform.position = new Vector3(transform.position.x - 0.01f, transform.position.y, transform.position.z);
             //Debug.Log(transform.position);
             if (transform.position.x <= (distance + leftMax))
                 {
                 moveRight = true;
                 }
             }
-        if (isCollided&&Input.GetButtonDown("Jump"))
+        if (isCollided && Input.GetButtonDown("Jump"))
             {
-    Player p=new Player();
-            Debug.Log("jump");
-            PlayerRigidBody.velocity = new Vector2(PlayerRigidBody.velocity.x, p.jumpForce);
-            Player.transform.SetParent(null);
+            Player playerScript = Player.GetComponent<Player>();
+            if (playerScript != null)
+                {
+                Debug.Log("Jumping from platform");
+                PlayerRigidBody.velocity = new Vector2(PlayerRigidBody.velocity.x, playerScript.jumpForce);
+                Player.transform.SetParent(null);
+                }
+            else
+                {
+                Debug.LogError("Player script is not attached to the Player GameObject!");
+                }
             }
         }
 

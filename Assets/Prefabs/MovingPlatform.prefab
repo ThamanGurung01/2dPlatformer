@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftMax: -0.5
   rightMax: 6
-  Player: {fileID: 0}
+  Player: {fileID: 9220390014882652679, guid: d553c9243584d7f489a9a49f798f8293, type: 3}
   PlayerRigidBody: {fileID: 0}
 --- !u!61 &5743794040207600655
 BoxCollider2D:

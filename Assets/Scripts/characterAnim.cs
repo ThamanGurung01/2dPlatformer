@@ -14,9 +14,10 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.LeftArrow)|| Input.GetKey(KeyCode.RightArrow))
+        if(Input.GetAxis("Horizontal")!=0)
         {
             anim.SetBool("isRunning", true);
+            //Debug.Log("running");
         }
         else
         {
